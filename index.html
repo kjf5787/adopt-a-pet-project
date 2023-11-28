@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="./js/cookies.js"></script>
+    <title>Project 1</title>
+    <script>
+        ////// DATA SET 1 /////// 
+        
+        var dataHeading = "Adopt A Pet"; // this is for the page's heading 
+        var dataSubheading = "Describe your pet"; // this is for the pages subheading
+
+        var jsonData = {
+            "init": ["Which pet would you like?", "Dog", "Cat", "Fish"],
+            "Cat": ["Which type of cat?", "Calico", "Tabby", "Sphynx"],
+            "Calico": ["Which trait?", "Loves Treats", "Playful"],
+            "Tabby": ["Which coat?", "Orange", "Patched"],
+            "Sphynx": ["Which personality?", "Evil", "Sophisticated"],
+            "Loves Treats": ["Which gender?", "Girl", "Boy"],
+            "Orange": ["What energy level?", "Lazy", "Active"],
+            "Patched": ["Declaw the cat?", "Claws", "No claws"],
+            "Girl": ["Which coat length?", "Longhair", "Shorthair"],
+            "Dog": ["Which size dog?", "Small", "Medium", "Large"],
+            "Small": ["Which personality?", "Energetic", "Fiesty"],
+            "Medium": ["Which hair length?", "Long", "Short"],
+            "Large": ["What do you want your dog to do?", "Be affectionate", "Solve mysteries"],
+            "Energetic": ["How mini do you want your dog to be?", "Super", "Not too small"],
+            "Fiesty": ["What do you want your dog to sound like?", "Yappy bark", "Can talk"],
+            "Long": ["Where do you want your dog to be from?", "The United States", "France"],
+            "Short": ["Spoiler Alert, do you want a Lab?", "Yes", "No"],
+            "Yes": ["Which Lab?", "Yellow", "Chocolate", "Black"],
+            "Fish": ["Which habitat do you want your fish from?", "Saltwater", "Freshwater"],
+            "Saltwater": ["What type of fish?", "Clownfish", "Butterflyfish"],
+            "Freshwater": ["Which scales?", "Orange scales", "Blue scales"],
+            "Clownfish": ["What do you want your fish to have?", "A lucky fin", "Red stripes"]
+        }
+
+        var resultSet = {
+            // key: [name, description, image url]
+            "Longhair": ["Gizmo", "This is my cat?? You cannot have her!!!", "gizmo.jpg"],
+            "Shorthair": ["Jinx", "A pretty pastel calico!", "jinx.jpg"],
+            "Boy": ["Lucky", "Boy calicos are rare!", "lucky.jpg"],
+            "Playful": ["Tuna", "She loves tuna, if you couldn't guess that yourself", "tuna.JPG"],
+            "Active": ["Ritchie", "I hope you have a lot of school spirit", "ritchie.JPG"],
+            "Lazy": ["Garfield", "Do you mind making lasagna every night?", "garfield.jpeg"],
+            "No claws": ["NO CAT!", "Declawing is mean! You can have this stuffed animal I guess", "stuffedCat.jpeg"],
+            "Claws": ["Casserole", "Good choice! I bet you'll take good care of Casserole", "casserole.jpg"],
+            "Evil": ["Rasputin", "Good luck", "rasputin.jpg"],
+            "Sophisticated": ["Angelica", "A lovely lady!", "angelica.JPG"],
+            "Super": ["Peanut", "Aww a little teacup yorkie!", "peanut.jpg"],
+            "Not too small": ["Penny", "Yorkies are full of energy!", "penny.jpg"],
+            "Yappy bark": ["Tabasco", "You got a chihuahua!", "tabasco.jpg"],
+            "Can talk": ["Scrappy Doo", "Good luck, he was pretty rude in Scooby-Doo (2002)", "scrappyDoo.jpg"],
+            "The United States": ["Snickers", "Australian Sheppards are actually from the Western U.S.", "snickers.jpg"],
+            "France": ["Hermes", "Tip: find a dog groomer asap", "hermes.jpg"],
+            "No": ["Pongo", "Should we send 101 of them?", "pongo.jpg"],
+            "Yellow": ["Sadie", "She's 3 years old and full of energy", "sadie.jpg"],
+            "Chocolate": ["Cody", "Reminder: chocolate labs can't have chocolate either!", "cody.jpg"],
+            "Black": ["Jet", "I hope you like the beach because he sure does", "jet.jpg"],
+            "Be affectionate": ["Blazer", "A Saint Bernard", "blazer.JPG"],
+            "Solve mysteries": ["Scooby Doo", "Got any scooby snacks?", "scoobyDoo.jpg"],
+            "A lucky fin": ["Nemo", "Nemo is a cartoon. He's not real. You can't have a fictional fish as a pet.", "nemo.jpg"],
+            "Red stripes": ["Tom", "A tomato clownfish! I hope you play minecraft though", "tom.jpg"],
+            "Butterflyfish": ["Lemon Drop", "How pretty!", "lemonDrop.jpg"],
+            "Orange scales": ["Sunny", "A goldfish. Safe choice.", "sunny.JPG"],
+            "Blue scales": ["Neptune", "A blue betta! They need bigger tanks than you might think!", "neptune.jpg"]
+        }
+        ////// DATA SET 1 ENDS ///////
+        
+        /*
+        DATA SET 2 
+        var dataHeading = "Which Minecraft Mob Are You?"; // this is for the page's h1 
+        var dataSubheading = "Describe yourself";
+
+        var jsonData = {
+            "init": ["Who would you be in a movie?", "A villain", "A hero"],
+            "A villain": ["Do you like hot or cold weather more?", "Hot", "Cold"],
+            "A hero": ["Do you like running?", "I prefer strolls", "I run all the time"],
+            "Cold": ["What do you prefer", "Leisure", "Sports"],
+            "Hot": ["What superpower would you choose?", "Flying", "Fire powers"],
+            "I prefer strolls": ["What do you wear more often?", "Neutral tones", "Bright colors"],
+            "I run all the time": ["Which are you?", "Extrovert", "Introvert"]
+        }
+
+        var resultSet = {
+            "Leisure": ["Zombie", "Minecraft zombies prefer leisure too!", "minecraft/zombie.png"],
+            "Sports": ["Skeleton", "When you said sports I hope you meant archery", "minecraft/skeleton.png"],
+            "Flying": ["Ghast", "Fly, fly away into the nether roof!", "minecraft/ghast.png"],
+            "Fire powers": ["Blaze", "They live in a place made of bricks. RIT students should feel right at home", "minecraft/blaze.png"],
+            "Bright colors": ["Mooshroom", "That makes you rare!", "minecraft/mooshroom.png"],
+            "Neutral tones": ["Cow", "Cows are a dependable mob", "minecraft/cow.png"],
+            "Extrovert": ["Wolf", "This is one of everyone's favorite mob!", "minecraft/wolf.png"],
+            "Introvert": ["Ocelot", "Remember when you could tame them and they'd turn into cats?", "minecraft/ocelot.png"]
+        } 
+        */
+        /////// END DATA SET 2 /////////
+
+        /* 
+        * Displays heading for the page 
+        */
+        function init(){
+            // h1 to describe the page 
+            var pageH1 = document.createElement('h1');
+            pageH1.setAttribute('id', 'pageH1'); // for css targetting 
+            pageH1.appendChild(document.createTextNode(dataHeading));
+            document.body.appendChild(pageH1);
+
+            // h2 to describe questionnaire
+            var questionnaireH1 = document.createElement('h1');
+            questionnaireH1.setAttribute('id', 'questionnaireH1'); // for css targetting 
+            questionnaireH1.appendChild(document.createTextNode(dataSubheading));
+            document.body.appendChild(questionnaireH1);
+        }
+
+        /*
+        * Populates the page by calling all methods
+        */
+        function createNext(key, val){
+
+            // checks if key is not null before deleting all succeeding children
+            if(key){
+                while( document.getElementById(key) !== document.body.lastChild ){
+                    document.body.removeChild(document.body.lastChild);
+                }
+            }
+            // check if value is a key in data set
+            if(jsonData.hasOwnProperty(val)){
+                createQuestions(key, val);
+            }
+            // else: populate page 
+            else{
+                // create div for results and choices 
+                let resultsDiv = document.createElement('div');
+                resultsDiv.setAttribute('id', 'resultsDiv'); // for css targetting
+                document.body.appendChild(resultsDiv);
+
+                // show results 
+                let resultsHeading = document.createElement('h1'); // heading for results
+                resultsHeading.appendChild(document.createTextNode("You got..."));
+                resultsDiv.appendChild(resultsHeading);
+                showResults();
+
+                // show choices 
+                let choicesHeading = document.createElement('h2'); // heading for choices
+                choicesHeading.appendChild(document.createTextNode("Your choices:"));
+                resultsDiv.appendChild(choicesHeading);
+                showChoices();
+
+                // create div for form
+                let formDiv = document.createElement('div');
+                formDiv.setAttribute('id', 'formDiv'); // for css targetting 
+                document.body.appendChild(formDiv);
+
+                // create form 
+                let formHeading = document.createElement('h1'); // heading for form
+                formHeading.appendChild(document.createTextNode("Personal Info"));
+                let formDesc = document.createElement('p'); // description for form
+                formDesc.appendChild(document.createTextNode("Please enter personal info to move forward.")); 
+                formDiv.appendChild(formHeading);
+                formDiv.appendChild(formDesc);
+                createForm();
+            }
+        } 
+
+        /*
+        * Creates the question form elements 
+        */
+        function createQuestions(key, val){
+            // get the array
+            let arr = jsonData[val];
+
+            // create label with question 
+            let labelElem = document.createElement('label');
+            labelElem.setAttribute('for', val);
+            labelElem.setAttribute('class', val); // to target in animation
+            // do not position the first question out of frame -- key = null if it is the first question 
+            if(key){ 
+                labelElem.setAttribute('style', 'position: relative; left: -372px; bottom: 186px;');
+            }
+            labelElem.appendChild(document.createTextNode(arr[0]));
+
+            // create select 
+            let selectElem = document.createElement('select');
+            selectElem.setAttribute('id', val);
+            selectElem.setAttribute('class', val); // to target in animation
+            if(key){ 
+                selectElem.setAttribute('style', 'position: relative; left: -372px; bottom: 186px;');
+            }
+            selectElem.setAttribute("onchange", "createNext('" + val + "', this.value); animateIn(this.value, 6, 3);");
+
+            // create options 
+            var i = 0;
+            arr.forEach(function(opt){
+                if (i > 0) {
+                    window['optionElem' + i] = document.createElement('option'); // create var optionElem0, optionElem1, ... optionElemi
+                    window['optionElem' + i].setAttribute('value', opt); // set value
+                    window['optionElem' + i].appendChild(document.createTextNode(opt));
+                    selectElem.appendChild(window['optionElem' + i]); // append to the select 
+                }
+                else {
+                    window['optionElem' + i] = document.createElement('option'); // create var optionElem0, optionElem1, ... optionElemi
+                    window['optionElem' + i].appendChild(document.createTextNode('select one'));
+                    selectElem.appendChild(window['optionElem' + i]); // append to the select 
+                }
+                i++;
+            });
+
+            // append to body 
+            document.body.appendChild(labelElem);
+            document.body.appendChild(selectElem);
+
+        }
+
+        /* 
+        * Displays choices made in questionnaire
+        */
+        function showChoices(){
+            // target for div to append to 
+            let rTarget = document.getElementById('resultsDiv');
+
+            // .setAttribute('id', 'userText');
+
+            for(var i = 0, len = document.getElementsByTagName('label').length; i < len; i++){
+                // get label and choice text
+                let label = document.getElementsByTagName('label')[i].firstChild.nodeValue;
+                let choice = document.getElementsByTagName('select')[i].value;
+
+                // put choice in a span to style it differently than the rest of the <p>
+                let choiceSpan = document.createElement('span');
+                choiceSpan.setAttribute('id', 'userText');
+                choiceSpan.appendChild(document.createTextNode(choice));
+
+                // create <p> elem for label and choice text
+                let textElem = document.createElement('p');
+                textElem.appendChild(document.createTextNode(label + ' '));
+                textElem.appendChild(choiceSpan);
+
+                rTarget.appendChild(textElem);
+            }
+        }
+
+        /*
+        * Displays results from questionnaire
+        */
+        function showResults(){
+            // target for div to append to 
+            let rTarget = document.getElementById('resultsDiv');
+
+            // get last selection made 
+            let index = document.getElementsByTagName('select').length - 1;
+            let lastSelect = document.getElementsByTagName('select')[index].value;      
+            
+            // get results from the result data set 
+            let resultName = resultSet[lastSelect][0];
+            let resultCaption = resultSet[lastSelect][1];
+            let url = resultSet[lastSelect][2];
+            
+            if(resultSet.hasOwnProperty(lastSelect)){
+                // create h2
+                let resultH2 = document.createElement('h2');
+                resultH2.appendChild(document.createTextNode(resultName));
+                
+                // create img
+                let resultImg = document.createElement('img');
+                resultImg.setAttribute('src', './images/' + url);
+                resultImg.setAttribute('alt', 'Image of ' + resultName + ', the result recieved');
+
+                // create p
+                let resultH3 = document.createElement('h3');
+                resultH3.appendChild(document.createTextNode(resultCaption));
+
+                // populate div then append to body 
+                rTarget.appendChild(resultH2);
+                rTarget.appendChild(resultImg);
+                rTarget.appendChild(resultH3);
+            }
+        }
+
+        /*
+        * Creates the form to accept user info 
+        */
+        function createForm(){
+            // target for div to append to 
+            let fTarget = document.getElementById('formDiv');
+
+            // create form
+            let formElem = document.createElement('form');
+            formElem.setAttribute('method', 'get');
+
+            // create first name field
+            let fnameLabel = document.createElement('label');
+            fnameLabel.setAttribute('for', 'fname');
+            fnameLabel.appendChild(document.createTextNode('First Name:'));
+            let fnameInput = document.createElement('input');
+            fnameInput.setAttribute('type', 'text');
+            fnameInput.setAttribute('id', 'fname');
+            fnameInput.setAttribute('name', 'fname');
+            fnameInput.setAttribute('style', '');
+
+            formElem.appendChild(fnameLabel);
+            formElem.appendChild(fnameInput);
+
+            // create last name field
+            let lnameLabel = document.createElement('label');
+            lnameLabel.setAttribute('for', 'lname');
+            lnameLabel.appendChild(document.createTextNode('Last Name:'));
+            let lnameInput = document.createElement('input');
+            lnameInput.setAttribute('type', 'text');
+            lnameInput.setAttribute('id', 'lname');
+            lnameInput.setAttribute('name', 'lname');
+
+            formElem.appendChild(lnameLabel);
+            formElem.appendChild(lnameInput);
+
+            // create email field
+            let emailLabel = document.createElement('label');
+            emailLabel.setAttribute('for', 'email');
+            emailLabel.appendChild(document.createTextNode('Email:'));
+            let emailInput = document.createElement('input');
+            emailInput.setAttribute('type', 'text');
+            emailInput.setAttribute('id', 'email');
+            emailInput.setAttribute('name', 'email');
+
+            formElem.appendChild(emailLabel);
+            formElem.appendChild(emailInput);
+
+            // create street address field
+            let streetLabel = document.createElement('label');
+            streetLabel.setAttribute('for', 'street');
+            streetLabel.appendChild(document.createTextNode('Street Address:'));
+            let streetInput = document.createElement('input');
+            streetInput.setAttribute('type', 'text');
+            streetInput.setAttribute('id', 'street');
+            streetInput.setAttribute('name', 'street');
+
+            formElem.appendChild(streetLabel);
+            formElem.appendChild(streetInput);
+
+            // create state field
+            let stateLabel = document.createElement('label');
+            stateLabel.setAttribute('for', 'state');
+            stateLabel.appendChild(document.createTextNode('State:'));
+            let stateInput = document.createElement('input');
+            stateInput.setAttribute('type', 'text');
+            stateInput.setAttribute('id', 'state');
+            stateInput.setAttribute('name', 'state');
+
+            formElem.appendChild(stateLabel);
+            formElem.appendChild(stateInput);
+
+            // create zip code field 
+            let zipLabel = document.createElement('label');
+            zipLabel.setAttribute('for', 'zip');
+            zipLabel.appendChild(document.createTextNode('Zip code:'));
+            let zipInput = document.createElement('input');
+            zipInput.setAttribute('type', 'text');
+            zipInput.setAttribute('id', 'zip');
+            zipInput.setAttribute('name', 'zip');
+
+            formElem.appendChild(zipLabel);
+            formElem.appendChild(zipInput);
+
+            // create submit button
+            let submitElem = document.createElement('input');
+            submitElem.setAttribute('type', 'button'); // type button instead of submit since submits reload the page when pressed 
+            submitElem.setAttribute('value', 'Submit');
+            submitElem.setAttribute('onclick', 'return handleForm();');
+
+            formElem.appendChild(submitElem);
+
+            // append to body
+            fTarget.appendChild(formElem);
+        }
+
+        /*
+        * Handles the form validation and data upon submit
+        */
+        function handleForm(){
+            // remove old div if user clicks twice
+            if(document.getElementById('inputDiv')){
+                document.getElementById('resultsDiv').removeChild(document.getElementById('inputDiv'));
+            }
+
+            // check if valid
+            if(validate()){
+                // store input 
+                var stoarageEnabled = storeInput();
+                
+                // only continue if storeInput() returned true --> meaning cookies or local storage was enabled 
+                if(stoarageEnabled){
+                    // display user input
+                    let inputDiv = document.createElement('div');
+                    inputDiv.setAttribute('id', 'inputDiv'); // set id to target when styling
+                    let inputH1 = document.createElement('h1');
+                    inputH1.appendChild(document.createTextNode('Your Info'));
+                    inputDiv.appendChild(inputH1);
+
+                    // vars for values from storage 
+                    var fname = '';
+                    var lname = '';
+                    var email = '';
+                    var street = '';
+                    var state = '';
+                    var zip = '';
+
+                    // check if cookies are enabled 
+                    if(navigator.cookieEnabled){
+                        //get values from cookies 
+                        if(GetCookie('fname')){
+                            fname = GetCookie('fname');
+                        }
+                        if(GetCookie('lname')){
+                            lname = GetCookie('lname');
+                        }
+                        if(GetCookie('email')){
+                            email = GetCookie('email');
+                        }
+                        if(GetCookie('street')){
+                            street = GetCookie('street');
+                        }
+                        if(GetCookie('state')){
+                            state = GetCookie('state');
+                        }
+                        if(GetCookie('zip')){
+                            zip = GetCookie('zip');
+                        }
+                    }
+                    // if not, check if local storage is available 
+                    else if(window.localStorage){
+                        // get values from local storage 
+                        if(localStorage.getItem('fname')){
+                            fname = localStorage.getItem('fname');
+                        }
+                        if(localStorage.getItem('lname')){
+                            lname = localStorage.getItem('lname');
+                        }
+                        if(localStorage.getItem('email')){
+                            email = localStorage.getItem('email');
+                        }
+                        if(localStorage.getItem('street')){
+                            street = localStorage.getItem('street');
+                        }
+                        if(localStorage.getItem('state')){
+                            state = localStorage.getItem('state');
+                        }
+                        if(localStorage.getItem('zip')){
+                            zip = localStorage.getItem('zip');
+                        }
+                    }
+
+                    let fnameElem = document.createElement('p');
+
+                    let fnameSpan = document.createElement('span');
+                    fnameSpan.setAttribute('id', 'userText');
+                    fnameSpan.appendChild(document.createTextNode(fname));
+                    fnameElem.appendChild(document.createTextNode('First name: '));
+                    fnameElem.appendChild(fnameSpan);
+                    inputDiv.appendChild(fnameElem);
+
+                    // last name
+                    let lnameElem = document.createElement('p');
+
+                    let lnameSpan = document.createElement('span');
+                    lnameSpan.setAttribute('id', 'userText');
+                    lnameSpan.appendChild(document.createTextNode(lname));
+                    lnameElem.appendChild(document.createTextNode('Last name: '));
+                    lnameElem.appendChild(lnameSpan);
+                    inputDiv.appendChild(lnameElem);
+
+                    // email
+                    let emailElem = document.createElement('p');
+                    let emailSpan = document.createElement('span');
+                    emailSpan.setAttribute('id', 'userText');
+                    emailSpan.appendChild(document.createTextNode(email));
+                    emailElem.appendChild(document.createTextNode('Email: '));
+                    emailElem.appendChild(emailSpan);
+                    inputDiv.appendChild(emailElem);
+
+                    // street
+                    let streetElem = document.createElement('p');
+                    let streetSpan = document.createElement('span');
+                    streetSpan.setAttribute('id', 'userText');
+                    streetSpan.appendChild(document.createTextNode(street));
+                    streetElem.appendChild(document.createTextNode('Street address: '));
+                    streetElem.appendChild(streetSpan);
+                    inputDiv.appendChild(streetElem);
+
+                    // state
+                    let stateElem = document.createElement('p');
+                    let stateSpan = document.createElement('span');
+                    stateSpan.setAttribute('id', 'userText');
+                    stateSpan.appendChild(document.createTextNode(state));
+                    stateElem.appendChild(document.createTextNode('State: '));
+                    stateElem.appendChild(stateSpan);
+                    inputDiv.appendChild(stateElem);
+
+                    // zip
+                    let zipElem = document.createElement('p');
+                    let zipSpan = document.createElement('span');
+                    zipSpan.setAttribute('id', 'userText');
+                    zipSpan.appendChild(document.createTextNode(zip));
+                    zipElem.appendChild(document.createTextNode('Zip code: '));
+                    zipElem.appendChild(zipSpan);
+                    inputDiv.appendChild(zipElem);
+
+                    // place inside resultsDiv so it is on the right side of page and is grouped
+                    // with user input display
+                    document.body.appendChild(inputDiv);
+                }
+            }
+        }
+
+        /*
+        * Validates form
+        */
+        function validate(){
+            var returnVal = true; // returns true if valid 
+
+            // variables for all of the data 
+            let fname = document.forms[0].fname.value;
+            let lname = document.forms[0].lname.value;
+            let email = document.forms[0].email.value;
+            let street = document.forms[0].street.value;
+            let state = document.forms[0].state.value;
+            let zip = document.forms[0].zip.value;
+
+            // check for empty fields --> make red if empty & set false 
+            // else, make sure background is not red 
+            if(!fname){
+                // change return to false
+                returnVal = false;
+                // change color of field to red
+                document.forms[0].fname.style.backgroundColor = '#EDB5B5';
+            }
+            else{
+                document.forms[0].fname.style.backgroundColor = '';
+            }
+            if(!lname){
+                // change return to false
+                returnVal = false;
+                // change color of field to red
+                document.forms[0].lname.style.backgroundColor = '#EDB5B5';
+            }
+            else{
+                document.forms[0].lname.style.backgroundColor = '';
+            }
+            if(!email){
+                // change return to false
+                returnVal = false;
+                // change color of field to red
+                document.forms[0].email.style.backgroundColor = '#EDB5B5';
+            }
+            else{
+                document.forms[0].email.style.backgroundColor = '';
+            }
+            if(!street){
+                // change return to false
+                returnVal = false;
+                // change color of field to red
+                document.forms[0].street.style.backgroundColor = '#EDB5B5';
+            }
+            else{
+                document.forms[0].street.style.backgroundColor = '';
+            }
+            if(!state){
+                // change return to false
+                returnVal = false;
+                // change color of field to red
+                document.forms[0].state.style.backgroundColor = '#EDB5B5';
+            }
+            else{
+                document.forms[0].state.style.backgroundColor = '';
+            }
+            if(!zip){
+                // change return to false
+                returnVal = false;
+                // change color of field to red
+                document.forms[0].zip.style.backgroundColor = '#EDB5B5';
+            }
+            else{
+                document.forms[0].zip.style.backgroundColor = '';
+            }
+
+            return returnVal;
+        }
+
+        /*
+        * Stores form input 
+        */
+        function storeInput(){
+            // variables for all of the data 
+            var fname = document.forms[0].fname.value;
+            var lname = document.forms[0].lname.value;
+            var email = document.forms[0].email.value;
+            var street = document.forms[0].street.value;
+            var state = document.forms[0].state.value;
+            var zip = document.forms[0].zip.value;
+            /*
+            // check if cookies are enabled 
+            if(navigator.cookieEnabled){
+                // set cookies
+                SetCookie('fname', fname);
+                SetCookie('lname', lname);
+                SetCookie('email', email);
+                SetCookie('street', street);
+                SetCookie('state', state);
+                SetCookie('zip', zip);
+                return true;
+            }
+            else {
+                // try catch block because window.localStorage will throw error if disabled */
+                try {
+                    if(window.localStorage){
+                        // set local storage 
+                        localStorage.setItem('fname', fname);
+                        localStorage.setItem('lname', lname);
+                        localStorage.setItem('email', email);
+                        localStorage.setItem('street', street);
+                        localStorage.setItem('state', state);
+                        localStorage.setItem('zip', zip);
+                        return true;
+                    }
+                    else{
+                        // redirect to new page
+                        window.location = "legacy.html";
+                        return false;
+                    }
+                }
+                catch(e){
+                    // redirect to new page
+                    window.location = "legacy.html";
+                    return false;
+                }
+            //}
+        }
+
+        /*
+        * Moves targets to default position 
+        * rPx is the rate of pixels it will move to the right each time
+        * dPx is the rate of pixels it will move down each time
+        */
+        function animateIn(targetClass, rPx, dPx){
+            // if objects exists, perform animation
+            if(document.getElementsByClassName(targetClass).length > 0){
+                // get objects to move
+                var labelToMove = document.getElementsByClassName(targetClass)[0];
+                var selectToMove = document.getElementsByClassName(targetClass)[1];
+
+                // get positions 
+                var labelLeftPos = parseInt(labelToMove.style.left); // add to this to move
+                var labelBotPos = parseInt(labelToMove.style.bottom); // subtract from this to move
+                var selectLeftPos = parseInt(selectToMove.style.left); // add to this to move
+                var selectBotPos = parseInt(selectToMove.style.bottom); // subtract from this to move
+
+                // move 
+                if(labelLeftPos < 0){
+                    labelToMove.style.left = labelLeftPos + rPx + 'px';
+                }
+                if(labelBotPos > 0){
+                    labelToMove.style.bottom = labelBotPos - dPx + 'px';
+                }
+                if(selectLeftPos < 0){
+                    selectToMove.style.left = selectLeftPos + rPx + 'px';
+                }
+                if(selectBotPos > 0){
+                    selectToMove.style.bottom = selectBotPos - dPx + 'px';
+                }
+
+                // check if anything still needs to move
+                if(labelLeftPos !== 0 && labelBotPos !== 0 && selectLeftPos !== 0 && selectBotPos !== 0){
+                    requestAnimationFrame(function(){ animateIn(targetClass, rPx, dPx) });
+                }
+            }
+        }
+
+    </script>
+</head>
+<body onload="init(); createNext(null, 'init');">
+
+</body>
+</html>

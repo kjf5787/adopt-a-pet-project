@@ -1,0 +1,152 @@
+/*** Text Styles ***/
+* {
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    color: #A91A18;
+    font-weight: 400;
+    font-size: 28px;
+}
+
+#pageH1 {
+    font-weight: bold;
+    font-size: 32px;
+}
+
+#questionnaireH1 {
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #0A6682;
+}
+
+#userText {
+    color: #A91A18;
+}
+
+/*** Body Layout Styles ***/
+body {
+    width: 85%;
+    margin: 0 50px 50px 50px;
+    background-color: #FAF2EF;
+}
+
+/*** Questions Div Styles ***/
+
+body > label {
+    display: inline-block;
+    padding: 10px;
+    background-color: #66A9BD;
+    border-radius: 10px;
+}
+
+body > select {
+    display: block;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #D0B9B0;
+}
+
+/*** Results Div Styles ***/
+
+#resultsDiv {
+    position: absolute;
+    top: 90.38px; /* height of page's heading + margins */
+    left: 500px;
+}
+
+#resultsDiv > img {
+    height: 250px;
+}
+
+#resultsDiv > h1 {
+    margin: 0;
+}
+
+#resultsDiv > h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#resultsDiv > h3 {
+    margin: 0;
+    font-weight: 400;
+    font-style: italic;
+}
+
+#resultsDiv > p {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/*** Form Div Styles ***/
+
+form > label {
+    display: inline-block;
+}
+
+form > input {
+    display: block;
+    margin-bottom: 10px;
+    background-color: #E8DAD5;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+#formDiv {
+    margin-top: 60px;
+}
+
+#formDiv > h1 {
+    margin-bottom: 0;
+}
+
+#formDiv > p {
+    margin-top: 10px;
+}
+
+form > input[type="button"] {
+    margin-top: 15px;
+    background-color: #D0B9B0;
+    border: 0px;
+    padding: 8px 12px 8px 12px;
+    border-radius: 8px;
+}
+
+form > input[type="button"]:hover {
+    background-color: #E8DAD5;
+    border: 2px solid #D0B9B0;
+    padding: 6px 10px 6px 10px;
+}
+
+/*** Input Div Styles ***/
+
+#inputDiv {
+    position: absolute;
+    left: 500px;
+    top: 700px;
+}
+
+#inputDiv > h1 {
+    margin-bottom: 0;
+}
+
+/*** Media Queries ***/
+
+@media (max-width: 750px){
+    #resultsDiv {
+        position: static;
+        top: auto;
+        left: auto;
+    }
+    #inputDiv {
+        position: static;
+        bottom: auto;
+        left: auto;
+    }
+}
